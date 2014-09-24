@@ -1,8 +1,10 @@
 var mainCtrl = function($scope){
     $scope.items = [
-        {"name":"Taro", "itemValue":1},
-        {"name":"Jiro", "itemValue":2},
-        {"name":"Saburo", "itemValue":3},
-        {"name":"Shiro", "itemValue":4},
+        {name:'Taro', value:1},
+        {name:'Jiro', value:2},
+        {name:'Saburo', value:3},
+        {name:'Shiro', value:4},
         ];
+    $scope.today = new Date();
+    $scope.addUser = function(){};
 }

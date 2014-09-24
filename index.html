@@ -13,13 +13,16 @@
 		<script type = "text/javascript" src = "script.js"></script>
     </head>
     <body>
-        <input type = "text" ng-model = "name" />
-        <p>{{name}}</p>
+        <input type = "text" ng-model = "myText">
+        <p>{{myText}}</p>
         
         <div ng-controller = "mainCtrl">
-                <select>
-                    <option ng-repeat = "item in items" value = {{item.itemValue}}>{{item.name}}</option>
-                </select>
+            <p>{{today | date:'yyyy-MM-dd'}}</p>
+
+            <form novalidate name="myForm" ng-submit="addUser()">
+                <select ng-model="myName" ng-options="item.value as item.name for item in items"></select>
+            </form>
+            <pre>{{myText|json}}{{myName|json}}</pre>
         </div>
     </body>
 </html>
