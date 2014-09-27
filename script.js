@@ -1,4 +1,5 @@
-var mainCtrl = function($scope){
+var myApp = angular.module('myApp', []);
+myApp.controller('mainCtrl', function($scope){
     $scope.items = [
         {name:'Taro', value:1},
         {name:'Jiro', value:2},
@@ -7,4 +8,5 @@ var mainCtrl = function($scope){
         ];
     $scope.today = new Date();
     $scope.addUser = function(){};
-}
+});
+
