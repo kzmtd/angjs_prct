@@ -2,26 +2,29 @@
 <html lang = "ja" ng-app="myApp">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
- 
-        <title>AngularJS Practice</title>
+        <title>AngularJS ToDo</title>
 
-        <style type = "text/css" src="style.css"></style>
+        <link rel="stylesheet" type = "text/css" href="style.css"></style>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
         <script type = "text/javascript" src = "script.js"></script>
     </head>
     <body>
-        <input type = "text" ng-model = "myText">
-        <p>{{myText}}</p>
-        
-        <div ng-controller = "mainCtrl as main">
-            <p>{{main.today | date:'yyyy-MM-dd'}}</p>
-
-            <form novalidate name="myForm" ng-submit="main.addUser()">
-                <select ng-model="myName" ng-options="item.value as item.name for item in main.items"></select>
-            </form>
-            <pre>{{main.myText|json}}{{myName|json}}</pre>
+        <h1>Todo List</h1>
+        <div ng-controller="mainCtrl as main">
+        <p>Finished Task: {{main.getDoneCount()}} / {{main.tasks.length}}
+        <button ng-click="main.deleteDone()">Delete Finished</button>
+        </p>
+        <ul>
+            <li ng-repeat="task in main.tasks">
+            <input type="checkbox" ng-model="task.done">
+            <span class="done-{{task.done}}">{{task.body}}</span>
+            <button ng-click="main.tasks.splice($index,1)">x</button>
+            </li>
+        </ul>
+        <form ng-submit="main.addNew()">
+            <input type="text" ng-model="main.newTaskBody">
+            <input type="submit" value="add">
+        </form>
         </div>
     </body>
 </html>
